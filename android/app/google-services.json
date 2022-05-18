@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "322766110129",
+    "project_id": "resto-hotel-booking",
+    "storage_bucket": "resto-hotel-booking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322766110129:android:8525b15baf7d0835719190",
+        "android_client_info": {
+          "package_name": "com.example.resto_hoel_book"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322766110129-56l7cv10rvfadoskbi81natj07mel2lj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG1V-Ji_Cfmw1Wi_OxAS3y07jGgi-zJ9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322766110129-56l7cv10rvfadoskbi81natj07mel2lj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "322766110129-47cn65blh7n320p0jemla2aecd1gqfc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.restoHoelBook"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
