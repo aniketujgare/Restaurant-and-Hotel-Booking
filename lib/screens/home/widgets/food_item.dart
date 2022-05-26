@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
+import 'package:resto_hoel_book/models/cart_controller.dart';
 import '../../../models/food.dart';
+import '../../../size_config.dart';
 
-class FoodItem extends StatelessWidget {
+class FoodItem extends StatefulWidget {
   final Food food;
   const FoodItem(this.food, {Key? key}) : super(key: key);
+
+  @override
+  State<FoodItem> createState() => _FoodItemState();
+}
+
+class _FoodItemState extends State<FoodItem> {
+  final cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +31,7 @@ class FoodItem extends StatelessWidget {
               width: 110,
               height: 110,
               child: Image.network(
-                food.imgUrl,
+                widget.food.imgUrl,
                 // 'jkjk',
                 fit: BoxFit.fitHeight,
                 loadingBuilder: (BuildContext context, Widget child,
@@ -53,7 +64,7 @@ class FoodItem extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            food.name,
+                            widget.food.name,
                             overflow: TextOverflow.fade,
                             softWrap: false,
                             // 'jj',
@@ -70,20 +81,20 @@ class FoodItem extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(height: 5),
+                    // const SizedBox(height: 5),
                     Text(
-                      food.desc,
+                      widget.food.desc,
                       // 'khbh',
                       overflow: TextOverflow.fade,
                       softWrap: false,
                       style: TextStyle(
-                        color: food.hightLight
+                        color: widget.food.hightLight
                             ? kPrimaryColor
                             : Colors.grey.withOpacity(0.8),
-                        height: 1.5,
+                        // height: 1.5,
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    // const SizedBox(height: 5),
                     Row(
                       children: [
                         const Text(
@@ -94,13 +105,82 @@ class FoodItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '${food.price}',
+                          '${widget.food.price}',
                           // '400',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
-                        )
+                        ),
+                        const Spacer(),
+                        if (cartController.isAdded(
+                            widget.food)) // if added then show + - buttns
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Material(
+                                type: MaterialType.transparency,
+                                child: IconButton(
+                                  splashRadius: 15,
+                                  highlightColor:
+                                      Colors.amberAccent.withOpacity(0.3),
+                                  color: Colors.amber,
+                                  onPressed: () {
+                                    cartController.removeFood(widget.food);
+                                    setState(() {});
+                                  },
+                                  icon: const Icon(Icons.remove),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(
+                                    getProportionateScreenWidth(12)),
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: kBackground,
+                                ),
+                                child: Obx(
+                                  () => Text(
+                                    cartController
+                                        .foodQuantity(widget.food)
+                                        .toString(),
+                                    // cartController.getQuantity.toString(),
+                                    // food.quantity.toString(),
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Material(
+                                type: MaterialType.transparency,
+                                child: IconButton(
+                                  splashRadius: 15,
+                                  highlightColor:
+                                      Colors.amberAccent.withOpacity(0.3),
+                                  color: Colors.amber,
+                                  onPressed: () {
+                                    cartController.addFood(widget.food);
+                                  },
+                                  icon: const Icon(Icons.add),
+                                ),
+                              ),
+                            ],
+                          ),
+                        if (!cartController.isAdded(widget.food))
+                          TextButton(
+                              child: const Text(
+                                'Add To Cart',
+                                style: TextStyle(
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  cartController.addFood(widget.food);
+                                });
+                              }),
                       ],
                     ),
                   ],

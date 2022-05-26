@@ -3,7 +3,6 @@ import 'package:resto_hoel_book/constants/colors.dart';
 import 'package:resto_hoel_book/models/restaurant.dart';
 import 'package:resto_hoel_book/models/restaurantt.dart';
 import 'package:resto_hoel_book/services/database.dart';
-
 import '../models/food.dart';
 
 class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -46,41 +45,19 @@ class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 // TextButton(
-                //     onPressed: () async {
-                //       Food _food = Food("imgUrl", "desc", "name", "waitTime",
-                //           4.8, "456", 215, 12, "about");
-
-                //       Map<String, List<Food>> flist = {
-                //         'Snacks': [_food]
-                //       };
-                //       var i = Database.db
-                //           .collection('restaurant')
-                //           .doc('jkLvqyLif4GqtG0WFhmA')
-                //           .get()
-                //           .then(
-                //         // ignore: avoid_print
-                //         (res) {
-                //           Restaurantt rest = Restaurantt(
-                //               res['name'],
-                //               res['waitTime'],
-                //               res['distance'],
-                //               res['label'],
-                //               res['logoUrl'],
-                //               res['desc'],
-                //               4.7,
-                //               flist);
-                //           print(rest.menu.length);
-
-                //           // Database().addFoodDish(rest);
-                //         },
-                //         // print(res['menu']['Snacks'][0]['name']),
-                //         // ignore: avoid_print
-                //         onError: (e) => print("Error completing: $e"),
-                //       );
-                //       // print(i['menu']);
-                //       // Database().addFoodDish(restaurant);
-                //     },
-                //     child: const Icon(Icons.add),),
+                //   onPressed: () {
+                //     //create restaurant
+                //     Restaurantt rest = Restaurantt('name', 'waitTime',
+                //         'distance', 'label', 'logoUrl', 'desc', 4.5, menu);
+                //     // print(rest.toFirestore());
+                //     Database.db
+                //         .collection("cities")
+                //         .doc("LA")
+                //         .set(rest.toFirestore())
+                //         .onError((e, _) => print("Error writing document: $e"));
+                //   },
+                //   child: const Icon(Icons.add),
+                // ),
               ],
             ),
           ),

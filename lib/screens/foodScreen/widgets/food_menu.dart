@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resto_hoel_book/models/cart_controller.dart';
 import 'package:resto_hoel_book/models/restaurantt.dart';
 import 'package:resto_hoel_book/size_config.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../components/custom_app_bar.dart';
 import '../../../constants/colors.dart';
-import '../../../models/restaurant.dart';
 import '../../home/widgets/food_list.dart';
 import '../../home/widgets/food_list_view.dart';
 import '../../home/widgets/restauratn_info.dart';
@@ -20,13 +20,15 @@ class FoodMenu extends StatefulWidget {
 }
 
 class _FoodMenuState extends State<FoodMenu> {
+  final cartController = Get.put(CartController());
   var selected = 0;
   final pageController = PageController();
-  final restaurant = Restaurant.generateRestaurant();
+  // final restaurant = Restaurant.generateRestaurant();
   final Restaurantt rest = Get.arguments;
   @override
   @override
   Widget build(BuildContext context) {
+    // print(rest.menu.toString());
     return Scaffold(
       backgroundColor: kBackground,
       body: Column(
@@ -47,7 +49,7 @@ class _FoodMenuState extends State<FoodMenu> {
             setState(() {
               selected = index;
             });
-            pageController.jumpToPage(index);
+            pageController.jumpToPage(selected);
           }, rest),
           Expanded(
             child: FoodListView(
@@ -68,7 +70,7 @@ class _FoodMenuState extends State<FoodMenu> {
             height: getProportionateScreenHeight(50),
             child: SmoothPageIndicator(
               controller: pageController,
-              count: restaurant.menu.length,
+              count: rest.menu.length,
               effect: CustomizableEffect(
                 dotDecoration: DotDecoration(
                     width: 8,
@@ -91,6 +93,83 @@ class _FoodMenuState extends State<FoodMenu> {
             ),
           )
         ],
+      ),
+      floatingActionButton: Obx(
+        () => Visibility(
+          visible: (cartController.cartQuantity > 0) ? true : false,
+          child: SizedBox(
+            width: getProportionateScreenWidth(100),
+            height: getProportionateScreenHeight(56),
+            child: RawMaterialButton(
+              fillColor: kPrimaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  getProportionateScreenWidth(50),
+                ),
+              ),
+              onPressed: () {
+                // Get.bottomSheet(
+                //   Padding(
+                //     padding: const EdgeInsets.all(8.0),
+                //     child: Column(
+                //       mainAxisSize: MainAxisSize.max,
+                //       children: const [
+                //         ListTile(
+                //           title: Text("Option 1"),
+                //           trailing: Icon(Icons.access_alarms),
+                //         ),
+                //         ListTile(
+                //           title: Text("Option 2"),
+                //           trailing: Icon(Icons.ac_unit),
+                //         ),
+                //         ListTile(
+                //           title: Text("Option 3"),
+                //           trailing: Icon(Icons.present_to_all_sharp),
+                //         ),
+                //         ListTile(
+                //           title: Text("Option 4"),
+                //           trailing: Icon(Icons.keyboard),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                //   elevation: 20.0,
+                //   enableDrag: false,
+                //   isScrollControlled: true,
+                //   backgroundColor: Colors.white,
+                //   // shape: const RoundedRectangleBorder(
+                //   //   borderRadius: BorderRadius.only(
+                //   //     topLeft: Radius.circular(30.0),
+                //   //     topRight: Radius.circular(30.0),
+                //   //   ),
+                //   // ),
+                // );
+              },
+              elevation: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Icon(
+                    Icons.shopping_bag_outlined,
+                    color: Colors.black,
+                    size: 30,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+                    decoration: const BoxDecoration(
+                        color: Colors.white, shape: BoxShape.circle),
+                    child: Obx(
+                      () => Text(
+                        // food.quantity.toString(),
+                        cartController.cartQuantity.toString(),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

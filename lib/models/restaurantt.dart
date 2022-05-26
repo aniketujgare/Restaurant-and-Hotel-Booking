@@ -39,4 +39,13 @@ class Restaurantt {
       'menu': menu,
     };
   }
+
+  // Map<String, List<Map<String, dynamic>>> toMenu() {
+  //   Map<String, dynamic> food;
+  //   List keyList = menu.keys.toList();
+  //   for (var i = 0; i < keyList.length; i++) {
+  //     for (var j = i; j < menu[j]; j++) {}
+  //   }
+  //   return {};
+  // }
 }

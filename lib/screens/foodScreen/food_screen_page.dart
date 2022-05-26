@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:resto_hoel_book/models/food.dart';
 import 'package:resto_hoel_book/models/restaurantt.dart';
+import 'package:resto_hoel_book/screens/foodScreen/widgets/restaurant_card_swi.dart';
 import '../../components/food_screen_app_bar.dart';
 import '../../services/database.dart';
 import '../../size_config.dart';
-import 'widgets/restaurant_card.dart';
 
 class FoodScreenPage extends StatelessWidget {
   const FoodScreenPage({Key? key}) : super(key: key);
@@ -86,8 +85,8 @@ class FoodScreenPage extends StatelessWidget {
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getProportionateScreenWidth(14),
-                                vertical: getProportionateScreenHeight(10)),
-                            child: RestaurantCard(
+                                vertical: getProportionateScreenHeight(8)),
+                            child: RestaurantCardSwi(
                               restaurant: rest,
                             ),
                           );
@@ -97,102 +96,11 @@ class FoodScreenPage extends StatelessWidget {
                   } else if (snapshot.hasError) {
                     return const Text('no data');
                   }
-                  return const CircularProgressIndicator();
+                  return const Center(child: CircularProgressIndicator());
                 },
               ),
             ),
           ],
-        )
-
-        // StreamBuilder(
-        //   stream: Database().getRestaurantStream(),
-        //   builder: (context, snapshot) {
-        //     if (!snapshot.hasData) {
-        //       return const CircularProgressIndicator();
-        //     } else {
-        //       <DocumentSnapshot> items = snapshot.data;
-        //       return const Text('GOt the data');
-        //     }
-        //   },
-        // )
-
-        //     SingleChildScrollView(
-        //         child: Padding(
-        //   padding: EdgeInsets.all(getProportionateScreenWidth(14)),
-        //   child: Column(
-        //     crossAxisAlignment: CrossAxisAlignment.start,
-        //     children: [
-        //       Padding(
-        //         padding: EdgeInsets.symmetric(
-        //             horizontal: getProportionateScreenWidth(10)),
-        //         child: const Text(
-        //           'Restaurants around you',
-        //           style: TextStyle(
-        //             fontSize: 18,
-        //             fontWeight: FontWeight.bold,
-        //           ),
-        //         ),
-        //       ),
-        //       SizedBox(height: getProportionateScreenHeight(14)),
-        //       Padding(
-        //         padding: EdgeInsets.symmetric(
-        //             horizontal: getProportionateScreenWidth(2),
-        //             vertical: getProportionateScreenHeight(8)),
-        //         child: const RestaurantCard(
-        //           name: 'Dynamite Rolls',
-        //           description: 'Rolls, Fast Food, Pizza',
-        //           image: 'assets/images/resto1.jpg',
-        //           price: 250,
-        //         ),
-        //       ),
-        //       Padding(
-        //         padding: EdgeInsets.symmetric(
-        //             horizontal: getProportionateScreenWidth(2),
-        //             vertical: getProportionateScreenHeight(8)),
-        //         child: StreamBuilder<QuerySnapshot>(
-        //           stream: Database().getRestaurantStream(),
-        //           builder: (ontext, snapshot) {
-        //             if (snapshot.hasData) {
-        //               if (snapshot.connectionState == ConnectionState.waiting) {
-        //                 return const Center(
-        //                   child: LinearProgressIndicator(),
-        //                 );
-        //               } else {
-        //                 return ListView(
-        //                   children: snapshot.data!.docs
-        //                       .map((e) => Card(
-        //                             child: Text(e.data().toString()),
-        //                           ))
-        //                       .toList(),
-        //                 );
-        //               }
-        //             } else if (snapshot.hasError) {
-        //               return const Text('no data');
-        //             }
-        //             return const CircularProgressIndicator();
-        //           },
-        //         ),
-        //         // const RestaurantCard(
-        //         //   name: 'Khao Lite',
-        //         //   description: 'Healthy Food, Rolls, Fast Food',
-        //         //   image: 'assets/images/resto3.jpg',
-        //         //   price: 150,
-        //         // ),
-        //       ),
-        //       Padding(
-        //         padding: EdgeInsets.symmetric(
-        //             horizontal: getProportionateScreenWidth(2),
-        //             vertical: getProportionateScreenHeight(8)),
-        //         child: const RestaurantCard(
-        //           name: 'The Mishti Box',
-        //           description: 'Mithai, Desserts',
-        //           image: 'assets/images/resto2.jpg',
-        //           price: 350,
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // )),
-        );
+        ));
   }
 }

@@ -33,24 +33,8 @@ class FoodListView extends StatelessWidget {
         children: category
             .map<Widget>((cat) => ListView.separated(
                 padding: EdgeInsets.zero,
-                itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {
-                        Get.to(
-                            FoodDetailPage(food: restaurant.menu[cat]![index]));
-                        // Navigator.of(context).push(
-                        //   MaterialPageRoute(
-                        //     builder: (context) => FoodDetailPage(
-                        //       // food: restaurant.menu[cat[selected]]![index],
-                        //       food: restaurant.menu[cat]![index],
-                        //     ),
-                        //   ),
-                        // );
-                      },
-                      child:
-                          // Text('fdg'),
-                          FoodItem(restaurant.menu[cat]![index]),
-                      // Text(restaurant.menu[cat]![selected].imgUrl),
-                    ),
+                itemBuilder: (context, index) =>
+                    FoodItem(restaurant.menu[cat]![index]),
                 separatorBuilder: (_, index) =>
                     SizedBox(height: getProportionateScreenHeight(15)),
                 itemCount: restaurant.menu[category[selected]]!.length))

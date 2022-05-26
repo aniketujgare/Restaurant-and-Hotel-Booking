@@ -1,15 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_hoel_book/components/custom_app_bar.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
+import 'package:resto_hoel_book/models/cart_controller.dart';
 import 'package:resto_hoel_book/models/food.dart';
 import 'package:resto_hoel_book/screens/detail/widget/food_detail.dart';
 import 'package:resto_hoel_book/screens/detail/widget/food_image.dart';
 import 'package:resto_hoel_book/size_config.dart';
 
 class FoodDetailPage extends StatelessWidget {
+  final cartController = Get.put(CartController());
   final Food food;
-  const FoodDetailPage({Key? key, required this.food}) : super(key: key);
+  FoodDetailPage({Key? key, required this.food}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +58,11 @@ class FoodDetailPage extends StatelessWidget {
                 padding: EdgeInsets.all(getProportionateScreenWidth(15)),
                 decoration: const BoxDecoration(
                     color: Colors.white, shape: BoxShape.circle),
-                child: Text(
-                  food.quantity.toString(),
+                child: Obx(
+                  () => Text(
+                    // food.quantity.toString(),
+                    cartController.cartQuantity.toString(),
+                  ),
                 ),
               )
             ],

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
+import 'package:resto_hoel_book/models/cart_controller.dart';
 import 'package:resto_hoel_book/models/food.dart';
 import 'package:resto_hoel_book/size_config.dart';
 
 class FoodQuantity extends StatelessWidget {
+  final cartController = Get.put(CartController());
   final Food food;
-  const FoodQuantity({Key? key, required this.food}) : super(key: key);
+  FoodQuantity({Key? key, required this.food}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +59,19 @@ class FoodQuantity extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
-                    '-',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  SizedBox(
+                    width: 30,
+                    child: TextButton(
+                      onPressed: () {
+                        cartController.removeFood(food);
+                      },
+                      child: const Text(
+                        '-',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                   Container(
@@ -69,21 +80,33 @@ class FoodQuantity extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: Colors.white,
                     ),
-                    child: Text(
-                      food.quantity.toString(),
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    child: Obx(
+                      () => Text(
+                        cartController.foodQuantity(food).toString(),
+                        // cartController.getQuantity.toString(),
+                        // food.quantity.toString(),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                  const Text(
-                    '+',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  SizedBox(
+                    width: 30,
+                    child: TextButton(
+                      onPressed: () {
+                        cartController.addFood(food);
+                      },
+                      child: const Text(
+                        '+',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
