@@ -23,26 +23,26 @@ class FoodDetail extends StatelessWidget {
           SizedBox(
             height: getProportionateScreenHeight(15),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildIconText(
-                Icons.access_time_outlined,
-                Colors.blue,
-                food.waitTime,
-              ),
-              _buildIconText(
-                Icons.star_outline,
-                Colors.amber,
-                food.score.toString(),
-              ),
-              _buildIconText(
-                Icons.local_fire_department_outlined,
-                Colors.red,
-                food.cal,
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //   children: [
+          //     _buildIconText(
+          //       Icons.access_time_outlined,
+          //       Colors.blue,
+          //       food.waitTime,
+          //     ),
+          //     _buildIconText(
+          //       Icons.star_outline,
+          //       Colors.amber,
+          //       food.score.toString(),
+          //     ),
+          //     _buildIconText(
+          //       Icons.local_fire_department_outlined,
+          //       Colors.red,
+          //       food.cal,
+          //     ),
+          //   ],
+          // ),
           SizedBox(height: getProportionateScreenHeight(30)),
           FoodQuantity(
             food: food,
@@ -102,14 +102,14 @@ class FoodDetail extends StatelessWidget {
             ],
           ),
           SizedBox(height: getProportionateScreenHeight(10)),
-          Text(
-            food.about,
-            style: const TextStyle(
-              wordSpacing: 1.2,
-              height: 1.5,
-              fontSize: 16,
-            ),
-          ),
+          // Text(
+          //   food.about,
+          //   style: const TextStyle(
+          //     wordSpacing: 1.2,
+          //     height: 1.5,
+          //     fontSize: 16,
+          //   ),
+          // ),
         ],
       ),
     );

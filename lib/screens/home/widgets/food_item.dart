@@ -30,23 +30,27 @@ class _FoodItemState extends State<FoodItem> {
               padding: const EdgeInsets.all(5),
               width: 110,
               height: 110,
-              child: Image.network(
-                widget.food.imgUrl,
-                // 'jkjk',
-                fit: BoxFit.fitHeight,
-                loadingBuilder: (BuildContext context, Widget child,
-                    ImageChunkEvent? loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(
-                    child: CircularProgressIndicator(
-                      value: loadingProgress.expectedTotalBytes != null
-                          ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                          : null,
-                      color: Colors.amber,
-                    ),
-                  );
-                },
+              child: ClipRRect(
+                borderRadius:
+                    BorderRadius.circular(getProportionateScreenWidth(12.0)),
+                child: Image.network(
+                  widget.food.imgUrl,
+                  // 'jkjk',
+                  fit: BoxFit.fitHeight,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                            : null,
+                        color: Colors.amber,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
             Expanded(
@@ -75,25 +79,21 @@ class _FoodItemState extends State<FoodItem> {
                             ),
                           ),
                         ),
-                        const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 15,
-                        )
                       ],
                     ),
                     // const SizedBox(height: 5),
-                    Text(
-                      widget.food.desc,
-                      // 'khbh',
-                      overflow: TextOverflow.fade,
-                      softWrap: false,
-                      style: TextStyle(
-                        color: widget.food.hightLight
-                            ? kPrimaryColor
-                            : Colors.grey.withOpacity(0.8),
-                        // height: 1.5,
-                      ),
-                    ),
+                    // Text(
+                    //   widget.food.desc,
+                    //   // 'khbh',
+                    //   overflow: TextOverflow.fade,
+                    //   softWrap: false,
+                    //   style: TextStyle(
+                    //     color: widget.food.hightLight
+                    //         ? kPrimaryColor
+                    //         : Colors.grey.withOpacity(0.8),
+                    //     // height: 1.5,
+                    //   ),
+                    // ),
                     // const SizedBox(height: 5),
                     Row(
                       children: [

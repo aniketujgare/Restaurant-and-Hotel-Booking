@@ -46,21 +46,21 @@ class Restaurant {
     };
   }
 
-  static Restaurant generateRestaurant() {
-    return Restaurant(
-      'Restaurant',
-      '20-30 min',
-      '2.4 km',
-      'Restaurnat',
-      'assets/images/res_logo.png',
-      'Orange sanwiches is delicious',
-      4.7,
-      {
-        'Recommend': Food.generateRecommendFoods(),
-        'Popular': Food.generatePopularFoods(),
-        'Noodles': [],
-        'Pizza': [],
-      },
-    );
-  }
+  // static Restaurant generateRestaurant() {
+  //   return Restaurant(
+  //     'Restaurant',
+  //     '20-30 min',
+  //     '2.4 km',
+  //     'Restaurnat',
+  //     'assets/images/res_logo.png',
+  //     'Orange sanwiches is delicious',
+  //     4.7,
+  //     {
+  //       'Recommend': Food.generateRecommendFoods(),
+  //       'Popular': Food.generatePopularFoods(),
+  //       'Noodles': [],
+  //       'Pizza': [],
+  //     },
+  //   );
+  // }
 }

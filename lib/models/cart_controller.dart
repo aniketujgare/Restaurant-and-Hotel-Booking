@@ -7,30 +7,36 @@ class CartController extends GetxController {
 
   void addFood(Food food) {
     // print("added");
-    if (_cartList.containsKey(food.name)) {
-      _cartList[food.name] += 1;
+    if (_cartList.containsKey(food)) {
+      _cartList[food] += 1;
     } else {
-      _cartList[food.name] = 1;
+      _cartList[food] = 1;
     }
   }
 
   void removeFood(Food food) {
     // print("removed");
-    if (_cartList.containsKey(food.name)) {
-      if (_cartList[food.name] > 0) {
-        _cartList[food.name] -= 1;
+    if (_cartList.containsKey(food)) {
+      if (_cartList[food] > 0) {
+        _cartList[food] -= 1;
       }
     } else {
-      _cartList[food.name] = 0;
+      // _cartList.remove(food);
+      _cartList[food] = 0;
+    }
+    for (var i = 0; i < _cartList.keys.length; i++) {
+      if (_cartList[food] == 0) {
+        _cartList.remove(food);
+      }
     }
   }
 
   int foodQuantity(Food food) {
-    return _cartList[food.name] ?? 0;
+    return _cartList[food] ?? 0;
   }
 
   bool isAdded(Food food) {
-    return (_cartList.containsKey(food.name) && _cartList[food.name] > 0);
+    return (_cartList.containsKey(food) && _cartList[food] > 0);
   }
 
   get cartQuantity {
@@ -42,5 +48,6 @@ class CartController extends GetxController {
     }
     return size;
   }
-  // get cartQ
+
+  get getCartList => _cartList;
 }

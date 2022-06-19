@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_hoel_book/models/cart_controller.dart';
 import 'package:resto_hoel_book/models/restaurantt.dart';
+import 'package:resto_hoel_book/screens/detail/widget/cart_screen.dart';
 import 'package:resto_hoel_book/size_config.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -108,42 +109,7 @@ class _FoodMenuState extends State<FoodMenu> {
                 ),
               ),
               onPressed: () {
-                // Get.bottomSheet(
-                //   Padding(
-                //     padding: const EdgeInsets.all(8.0),
-                //     child: Column(
-                //       mainAxisSize: MainAxisSize.max,
-                //       children: const [
-                //         ListTile(
-                //           title: Text("Option 1"),
-                //           trailing: Icon(Icons.access_alarms),
-                //         ),
-                //         ListTile(
-                //           title: Text("Option 2"),
-                //           trailing: Icon(Icons.ac_unit),
-                //         ),
-                //         ListTile(
-                //           title: Text("Option 3"),
-                //           trailing: Icon(Icons.present_to_all_sharp),
-                //         ),
-                //         ListTile(
-                //           title: Text("Option 4"),
-                //           trailing: Icon(Icons.keyboard),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                //   elevation: 20.0,
-                //   enableDrag: false,
-                //   isScrollControlled: true,
-                //   backgroundColor: Colors.white,
-                //   // shape: const RoundedRectangleBorder(
-                //   //   borderRadius: BorderRadius.only(
-                //   //     topLeft: Radius.circular(30.0),
-                //   //     topRight: Radius.circular(30.0),
-                //   //   ),
-                //   // ),
-                // );
+                Get.toNamed(CartScreen.routName);
               },
               elevation: 2,
               child: Row(

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
 import 'package:resto_hoel_book/models/restaurantt.dart';
 
-import '../../../models/restaurant.dart';
-
 class FoodList extends StatelessWidget {
   final int selected;
   final Function callback;
@@ -14,6 +12,7 @@ class FoodList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final category = restaurant.menu.keys.toList();
+
     return Container(
       height: 100,
       padding: const EdgeInsets.symmetric(vertical: 30),

@@ -53,20 +53,16 @@ class FoodScreenPage extends StatelessWidget {
                                 dishNo < _noOfDishes;
                                 dishNo++) {
                               Food _food = Food(
-                                  e['menu'][category][dishNo]['imgUrl'],
-                                  e['menu'][category][dishNo]['desc'],
-                                  e['menu'][category][dishNo]['name'],
-                                  e['menu'][category][dishNo]['waitTime'],
-                                  e['menu'][category][dishNo]['score'],
-                                  // 4.5,
-                                  e['menu'][category][dishNo]['cal'],
-                                  int.parse(
-                                      e['menu'][category][dishNo]['price']),
-                                  // 45,
+                                e['menu'][category][dishNo]['imgUrl'],
+                                e['menu'][category][dishNo]['name'],
+                                // 4.5,
 
-                                  e['menu'][category][dishNo]['quantity'],
-                                  // 45,
-                                  e['menu'][category][dishNo]['about']);
+                                int.parse(e['menu'][category][dishNo]['price']),
+                                // 45,
+
+                                // 45,
+                                // e['menu'][category][dishNo]['about']
+                              );
 
                               _dishList.add(_food);
                             }

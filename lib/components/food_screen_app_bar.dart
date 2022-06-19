@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/models/restaurant.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
-import 'package:resto_hoel_book/services/database.dart';
-import '../models/food.dart';
+import 'package:resto_hoel_book/services/addDish.dart';
+
+import '../services/database.dart';
 
 class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FoodScreenAppBar({
@@ -14,15 +14,15 @@ class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, List<Food>> menu = {
-      'Recommend': Food.generateRecommendFoods(),
-      'Popular': Food.generatePopularFoods(),
-      'Noodles': [],
-      'Pizza': [],
-    };
+    // final Map<String, List<Food>> menu = {
+    //   'Recommend': Food.generateRecommendFoods(),
+    //   'Popular': Food.generatePopularFoods(),
+    //   'Noodles': [],
+    //   'Pizza': [],
+    // };
 
-    final restaurant = Restaurant("ANiket", "10", "7", "dhasu", "logoUrl",
-        "bhari tikhat mutton", 4.7, menu);
+    // final restaurant = Restaurant("ANiket", "10", "7", "dhasu", "logoUrl",
+    //     "bhari tikhat mutton", 4.7, menu);
 
     return PreferredSize(
         preferredSize: preferredSize,
@@ -35,8 +35,8 @@ class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: kPrimaryColor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "Foodiee",
                   style: TextStyle(
                     color: Colors.white,
@@ -44,20 +44,21 @@ class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // TextButton(
-                //   onPressed: () {
-                //     //create restaurant
-                //     Restaurantt rest = Restaurantt('name', 'waitTime',
-                //         'distance', 'label', 'logoUrl', 'desc', 4.5, menu);
-                //     // print(rest.toFirestore());
-                //     Database.db
-                //         .collection("cities")
-                //         .doc("LA")
-                //         .set(rest.toFirestore())
-                //         .onError((e, _) => print("Error writing document: $e"));
-                //   },
-                //   child: const Icon(Icons.add),
-                // ),
+                TextButton(
+                  onPressed: () {
+                    // print(rest.toFirestore());
+                    Database.db
+                        .collection("restaurant")
+                        .doc("AIHhwOis5XtfweVeqt8a")
+                        .set(
+                            dish_add,
+                            SetOptions(
+                              merge: true,
+                            ))
+                        .onError((e, _) => print("Error writing document: $e"));
+                  },
+                  child: const Icon(Icons.add),
+                ),
               ],
             ),
           ),

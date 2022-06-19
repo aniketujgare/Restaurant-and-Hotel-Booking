@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/models/restaurant.dart';
 import 'package:resto_hoel_book/models/restaurantt.dart';
 import 'package:resto_hoel_book/size_config.dart';
 
 class RestaurantInfo extends StatelessWidget {
-  final restaurnat = Restaurant.generateRestaurant();
+  // final restaurnat = Restaurant.generateRestaurant();
   final Restaurantt restaurantt;
   RestaurantInfo({Key? key, required this.restaurantt}) : super(key: key);
   @override
