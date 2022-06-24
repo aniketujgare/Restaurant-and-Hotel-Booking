@@ -10,7 +10,7 @@ class HotelDetails extends StatelessWidget {
   static String routName = '/hotel_details';
 
   final List<String> images = [
-    "https://www.mayfairhotels.com/mayfair-siliguri/img/slider/siliguri-slide.jpg",
+    "https://cf.bstatic.com/xdata/images/hotel/max1024x768/336859645.jpg?k=36173da8bcedb9f207316b63f4c41e9b8210d15b1fdef598fa583fe8691e0567&o=&hp=1",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXHPs2hAOQ46B1bg2DiKqVjaV6efSIJSmhaA&usqp=CAU",
     "https://d1ha4q9jvugw4k.cloudfront.net/public_media/hotel_images/Delhi/hotel-new-city-lite/1.jpg",
     "https://pix10.agoda.net/hotelImages/256/256343/256343_20010216190086611344.jpg?ca=9&ce=1&s=1024x768",

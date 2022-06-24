@@ -6,11 +6,11 @@ import 'package:resto_hoel_book/size_config.dart';
 class RestaurantInfo extends StatelessWidget {
   // final restaurnat = Restaurant.generateRestaurant();
   final Restaurantt restaurantt;
-  RestaurantInfo({Key? key, required this.restaurantt}) : super(key: key);
+  const RestaurantInfo({Key? key, required this.restaurantt}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: getProportionateScreenHeight(40)),
+      margin: EdgeInsets.only(top: getProportionateScreenHeight(35)),
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(25)),
       child: Column(

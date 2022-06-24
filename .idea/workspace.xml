@@ -7,10 +7,10 @@
     <list default="true" id="0a9cd644-1f43-4e59-8c2e-01849a5601f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/restaurantt.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/restaurantt.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/foodScreen/food_screen_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/foodScreen/food_screen_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/foodScreen/widgets/food_menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/foodScreen/widgets/food_menu.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/widgets/food_list_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/widgets/food_list_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/food_screen_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/food_screen_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/widgets/restauratn_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/widgets/restauratn_info.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/hotel screen/hotel_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/hotel screen/hotel_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
