@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:resto_hoel_book/screens/detail/widget/cart_screen.dart';
+import 'package:resto_hoel_book/screens/detail/widget/delivery_details.dart';
+import 'package:resto_hoel_book/screens/detail/widget/payment_page.dart';
 import 'package:resto_hoel_book/screens/foodScreen/widgets/food_menu.dart';
 import 'package:resto_hoel_book/screens/home/home.dart';
 import 'package:resto_hoel_book/screens/hotel%20screen/hotel_detail.dart';
@@ -12,5 +14,7 @@ final Map<String, WidgetBuilder> routes = {
   HotelScreenPage.routName: (context) => const HotelScreenPage(),
   FoodMenu.routName: (context) => const FoodMenu(),
   HotelDetails.routName: (context) => HotelDetails(),
-  CartScreen.routName: (context) => CartScreen(),
+  CartScreen.routName: (context) => const CartScreen(),
+  DeliveryDetails.routName: (context) => const DeliveryDetails(),
+  PaymentPage.routName: (context) => const PaymentPage(),
 };

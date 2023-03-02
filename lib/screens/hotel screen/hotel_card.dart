@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:resto_hoel_book/screens/hotel%20screen/hotel_detail.dart';
-import 'package:resto_hoel_book/size_config.dart';
+import '../hotel%20screen/hotel_detail.dart';
+import '../../size_config.dart';
 
 class HotelCard extends StatelessWidget {
   final String name;
@@ -34,14 +34,14 @@ class HotelCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(getProportionateScreenWidth(15)),
+                  topRight: Radius.circular(getProportionateScreenWidth(15))),
               child: Image(
                 height: getProportionateScreenHeight(180),
                 image: AssetImage(image),
                 fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(getProportionateScreenWidth(15)),
-                  topRight: Radius.circular(getProportionateScreenWidth(15))),
             ),
             SizedBox(height: getProportionateScreenHeight(10)),
             Padding(
@@ -58,6 +58,11 @@ class HotelCard extends StatelessWidget {
                   ),
                   Container(
                     height: getProportionateScreenHeight(30),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius:
+                          BorderRadius.circular(getProportionateScreenWidth(6)),
+                    ),
                     child: const Center(
                       child: Text(
                         " ${3.6} ★ ",
@@ -65,11 +70,6 @@ class HotelCard extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius:
-                          BorderRadius.circular(getProportionateScreenWidth(6)),
                     ),
                   )
                 ],

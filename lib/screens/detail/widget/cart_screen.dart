@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:resto_hoel_book/components/custom_app_bar.dart';
-import 'package:resto_hoel_book/models/cart_controller.dart';
-import 'package:resto_hoel_book/screens/detail/widget/dash_line.dart';
+
+import '../../../components/custom_app_bar.dart';
 import '../../../constants/colors.dart';
+import '../../../models/cart_controller.dart';
 import '../../../size_config.dart';
+import 'dash_line.dart';
+import 'delivery_details.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -20,18 +22,18 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var _cartList = cartController.getCartList;
-    var _keys = cartController.getCartList.keys.toList();
-    // print(_cartList[_keys[0]].toString());
+    // var cartList = cartController.getCartList;
+    var keys = cartController.getCartList.keys.toList();
+    // print(cartList[keys[0]].toString());
     num cartTotal = 0;
     // // print(foodList);
-    for (var i = 0; i < _keys.length; i++) {
-      // print(_cartList[_keys[i]]);
-      cartTotal += _keys[i].price *
-          num.tryParse(cartController.foodQuantity(_keys[i]).toString());
-      // int.parse(_keys[i].price) * cartController.foodQuantity(_keys[i]);
+    for (var i = 0; i < keys.length; i++) {
+      // print(cartList[keys[i]]);
+      cartTotal += keys[i].price *
+          num.tryParse(cartController.foodQuantity(keys[i]).toString());
+      // int.parse(keys[i].price) * cartController.foodQuantity(keys[i]);
     }
-    // print(_keys[0]);
+    // print(keys[0]);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 60),
@@ -65,11 +67,11 @@ class _CartScreenState extends State<CartScreen> {
                         ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: _keys.length,
+                          itemCount: keys.length,
                           itemBuilder: (context, index) {
                             return ListTile(
                               leading: Text(
-                                _keys[index].name,
+                                keys[index].name,
                                 style: TextStyle(
                                     fontSize: getProportionateScreenWidth(13)),
                               ),
@@ -87,7 +89,7 @@ class _CartScreenState extends State<CartScreen> {
                                         color: Colors.amber,
                                         onPressed: () {
                                           cartController
-                                              .removeFood(_keys[index]);
+                                              .removeFood(keys[index]);
                                           setState(() {});
                                         },
                                         icon: Icon(
@@ -106,7 +108,7 @@ class _CartScreenState extends State<CartScreen> {
                                       child: Obx(
                                         () => Text(
                                           cartController
-                                              .foodQuantity(_keys[index])
+                                              .foodQuantity(keys[index])
                                               .toString(),
                                           style: TextStyle(
                                             fontSize:
@@ -124,7 +126,7 @@ class _CartScreenState extends State<CartScreen> {
                                             Colors.amberAccent.withOpacity(0.3),
                                         color: Colors.amber,
                                         onPressed: () {
-                                          cartController.addFood(_keys[index]);
+                                          cartController.addFood(keys[index]);
                                           setState(() {});
                                         },
                                         icon: Icon(
@@ -138,7 +140,7 @@ class _CartScreenState extends State<CartScreen> {
                                       child: FittedBox(
                                         fit: BoxFit.contain,
                                         child: Text(
-                                          '₹${_keys[index].price * cartController.foodQuantity(_keys[index])}',
+                                          '₹${keys[index].price * cartController.foodQuantity(keys[index])}',
                                           textAlign: TextAlign.justify,
                                           style: const TextStyle(
                                               color: Colors.black,
@@ -150,7 +152,7 @@ class _CartScreenState extends State<CartScreen> {
                                     // FittedBox(
                                     //   fit: BoxFit.scaleDown,
                                     //   child: Text(
-                                    //       '₹${_keys[index].price * cartController.foodQuantity(_keys[index])}',
+                                    //       '₹${keys[index].price * cartController.foodQuantity(keys[index])}',
                                     //       style: TextStyle(
                                     //         fontSize:
                                     //             getProportionateScreenWidth(15),
@@ -241,7 +243,7 @@ class _CartScreenState extends State<CartScreen> {
         ),
       ),
       bottomSheet: Container(
-        height: SizeConfig.screenHeight! * 0.21,
+        height: SizeConfig.screenHeight! * 0.23,
         width: double.maxFinite,
         color: Colors.transparent,
         child: Container(
@@ -270,7 +272,7 @@ class _CartScreenState extends State<CartScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "Delivery Address",
+                      "Proceed With Order",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
@@ -292,15 +294,18 @@ class _CartScreenState extends State<CartScreen> {
                     )
                   ],
                 ),
-                DashLineView(
+                const DashLineView(
                     fillRate: 0.5, dashWith: 5, dashColor: Colors.grey),
                 const SizedBox(height: 10),
-                const Text(
-                  'C/o Aniket Ujgare, Behind SRPF Camp Hingoli - 431513, Maharashtra',
-                  maxLines: 1,
-                  softWrap: false,
-                  overflow: TextOverflow.ellipsis,
+                SizedBox(
+                  height: getProportionateScreenHeight(10),
                 ),
+                // const Text(
+                //   'C/O Aniket Ujgare, Behind SRPF Camp Hingoli - 431513, Maharashtra',
+                //   maxLines: 1,
+                //   softWrap: false,
+                //   overflow: TextOverflow.ellipsis,
+                // ),
                 SizedBox(
                   height: getProportionateScreenHeight(10),
                 ),
@@ -317,7 +322,8 @@ class _CartScreenState extends State<CartScreen> {
                     SizedBox(
                       width: SizeConfig.screenWidth! * 0.6,
                       child: TextButton(
-                          onPressed: null,
+                          onPressed: () =>
+                              Get.toNamed(DeliveryDetails.routName),
                           style: TextButton.styleFrom(
                             backgroundColor: Colors.green,
                             elevation: 5,
@@ -326,10 +332,10 @@ class _CartScreenState extends State<CartScreen> {
                             ),
                           ),
                           child: const Text(
-                            'Proceed to Pay',
+                            'Next',
                             style: TextStyle(color: Colors.white),
                           )),
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(

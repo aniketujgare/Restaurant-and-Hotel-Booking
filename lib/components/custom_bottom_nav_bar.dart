@@ -1,22 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/screens/foodScreen/food_screen_page.dart';
-import 'package:resto_hoel_book/screens/hotel%20screen/hotel_screen_page.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import '../constants/colors.dart';
+import '../screens/foodScreen/food_screen_page.dart';
+import '../screens/hotel%20screen/hotel_screen_page.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    PersistentTabController _controller;
+    PersistentTabController controller;
 
-    _controller = PersistentTabController(initialIndex: 0);
+    controller = PersistentTabController(initialIndex: 0);
 
     return PersistentTabView(
       context,
-      controller: _controller,
+      controller: controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,

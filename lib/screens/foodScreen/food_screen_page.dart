@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:resto_hoel_book/models/food.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
-import 'package:resto_hoel_book/screens/foodScreen/widgets/restaurant_card_swi.dart';
+
 import '../../components/food_screen_app_bar.dart';
+import '../../models/food.dart';
+import '../../models/restaurantt.dart';
 import '../../services/database.dart';
 import '../../size_config.dart';
+import 'widgets/restaurant_card_swi.dart';
 
 class FoodScreenPage extends StatelessWidget {
   const FoodScreenPage({Key? key}) : super(key: key);
@@ -42,17 +43,17 @@ class FoodScreenPage extends StatelessWidget {
                     } else {
                       return ListView(
                         children: snapshot.data!.docs.map((e) {
-                          Map<String, List<Food>> _foodList = {};
+                          Map<String, List<Food>> foodList = {};
 
-                          List<String> _keys = [];
-                          e['menu'].keys.forEach((k) => _keys.add(k));
-                          for (var category in _keys) {
-                            List<Food> _dishList = [];
-                            int _noOfDishes = e['menu'][category].length;
+                          List<String> keys = [];
+                          e['menu'].keys.forEach((k) => keys.add(k));
+                          for (var category in keys) {
+                            List<Food> dishList = [];
+                            int noOfDishes = e['menu'][category].length;
                             for (int dishNo = 0;
-                                dishNo < _noOfDishes;
+                                dishNo < noOfDishes;
                                 dishNo++) {
-                              Food _food = Food(
+                              Food food = Food(
                                 e['menu'][category][dishNo]['imgUrl'],
                                 e['menu'][category][dishNo]['name'],
                                 // 4.5,
@@ -64,10 +65,10 @@ class FoodScreenPage extends StatelessWidget {
                                 // e['menu'][category][dishNo]['about']
                               );
 
-                              _dishList.add(_food);
+                              dishList.add(food);
                             }
-                            _foodList.addAll({category: _dishList});
-                            // print(_foodList['Snacks']![0].name);
+                            foodList.addAll({category: dishList});
+                            // print(foodList['Snacks']![0].name);
                           }
                           Restaurantt rest = Restaurantt(
                               e['name'],
@@ -77,7 +78,7 @@ class FoodScreenPage extends StatelessWidget {
                               e['logoUrl'],
                               e['desc'],
                               double.parse(e['score']),
-                              _foodList);
+                              foodList);
                           return Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getProportionateScreenWidth(14),

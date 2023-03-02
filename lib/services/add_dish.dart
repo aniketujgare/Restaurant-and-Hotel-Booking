@@ -1,4 +1,4 @@
-const dish_add = {
+const dishAdd = {
   'menu': {
     "Particulars": [
       {

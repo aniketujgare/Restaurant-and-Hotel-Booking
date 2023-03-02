@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:resto_hoel_book/models/food.dart';
-import 'package:resto_hoel_book/models/restaurant.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
+
+import '../models/restaurantt.dart';
 
 class Database {
   static final db = FirebaseFirestore.instance;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/models/food.dart';
-import 'package:resto_hoel_book/size_config.dart';
+import '../../../constants/colors.dart';
+import '../../../models/food.dart';
+import '../../../size_config.dart';
 
 import 'food_quantity.dart';
 
@@ -112,22 +112,6 @@ class FoodDetail extends StatelessWidget {
           // ),
         ],
       ),
-    );
-  }
-
-  Widget _buildIconText(IconData icon, Color color, String text) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          color: color,
-          size: 20,
-        ),
-        Text(
-          text,
-          style: const TextStyle(fontSize: 16),
-        ),
-      ],
     );
   }
 }

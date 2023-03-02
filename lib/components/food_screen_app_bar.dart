@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/services/addDish.dart';
 
-import '../services/database.dart';
+import '../constants/colors.dart';
 
 class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FoodScreenAppBar({

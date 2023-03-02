@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:resto_hoel_book/models/restaurant.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
-import 'package:resto_hoel_book/screens/foodScreen/widgets/food_menu.dart';
 
+import '../../../models/restaurantt.dart';
 import '../../../size_config.dart';
+import 'food_menu.dart';
 
 class RestaurantCard extends StatelessWidget {
   final Restaurantt restaurant;
@@ -101,16 +100,16 @@ class RestaurantCard extends StatelessWidget {
                     ),
                     Container(
                       height: 20,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(
+                            getProportionateScreenWidth(4)),
+                      ),
                       child: Text(
                         " ${restaurant.score} ★ ",
                         style: const TextStyle(
                           color: Colors.white,
                         ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(4)),
                       ),
                     )
                   ],

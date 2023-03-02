@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0a9cd644-1f43-4e59-8c2e-01849a5601f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/food_screen_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/food_screen_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/widgets/restauratn_info.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/widgets/restauratn_info.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/hotel screen/hotel_detail.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/hotel screen/hotel_detail.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routs.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/detail/widget/cart_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/detail/widget/cart_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +36,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../queue_for_you" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

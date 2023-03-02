@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
-import 'package:resto_hoel_book/screens/detail/food_detail_page.dart';
-import 'package:resto_hoel_book/size_config.dart';
 
+import '../../../models/restaurantt.dart';
+import '../../../size_config.dart';
 // import '../../../models/restaurant.dart';
 import 'food_item.dart';
 
