@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 
-import 'food.dart';
+// import 'food.dart';
+import 'menu_model.dart';
 
 class CartController extends GetxController {
   var cartList = {}.obs;
   var totalFoodItems = 1.obs;
 
-  void addFood(Food food) {
+  void addFood(Menu food) {
     // print("added");
     if (cartList.containsKey(food)) {
       cartList[food] += 1;
@@ -15,7 +16,7 @@ class CartController extends GetxController {
     }
   }
 
-  void removeFood(Food food) {
+  void removeFood(Menu food) {
     // print("removed");
     if (cartList.containsKey(food)) {
       if (cartList[food] > 0) {
@@ -32,11 +33,11 @@ class CartController extends GetxController {
     }
   }
 
-  int foodQuantity(Food food) {
+  int foodQuantity(Menu food) {
     return cartList[food] ?? 0;
   }
 
-  bool isAdded(Food food) {
+  bool isAdded(Menu food) {
     return (cartList.containsKey(food) && cartList[food] > 0);
   }
 

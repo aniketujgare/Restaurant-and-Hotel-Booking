@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import 'package:resto_hoel_book/components/custom_app_bar.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
 import 'package:resto_hoel_book/models/cart_controller.dart';
-import 'package:resto_hoel_book/models/food.dart';
+import 'package:resto_hoel_book/models/menu_model.dart';
 import 'package:resto_hoel_book/screens/detail/widget/food_detail.dart';
 import 'package:resto_hoel_book/screens/detail/widget/food_image.dart';
 import 'package:resto_hoel_book/size_config.dart';
 
 class FoodDetailPage extends StatelessWidget {
   final cartController = Get.put(CartController());
-  final Food food;
+  final Menu food;
   FoodDetailPage({Key? key, required this.food}) : super(key: key);
   @override
   Widget build(BuildContext context) {

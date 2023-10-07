@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
+import 'package:resto_hoel_book/screens/foodScreen/widgets/food_menu.dart';
+
+import '../../../models/menu_model.dart';
+import '../../../models/restaurant_model.dart';
 
 class FoodList extends StatelessWidget {
   final int selected;
   final Function callback;
-  final Restaurantt restaurant;
-  const FoodList(this.selected, this.callback, this.restaurant, {Key? key})
+  final RxMap<String, List<Menu>> foodMenu;
+  const FoodList(this.selected, this.callback, this.foodMenu, {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final category = restaurant.menu.keys.toList();
+    // print(restaurant.menu.toString());
+    final category = foodMenu.keys.toList();
 
     return Container(
       height: 100,

@@ -1,17 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../components/food_screen_app_bar.dart';
-import '../../models/food.dart';
-import '../../models/restaurantt.dart';
-import '../../services/database.dart';
+import '../../getx_controller/restaurants_controller.dart';
 import '../../size_config.dart';
 import 'widgets/restaurant_card_swi.dart';
 
 class FoodScreenPage extends StatelessWidget {
-  const FoodScreenPage({Key? key}) : super(key: key);
+  const FoodScreenPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final RestaurantController restaurantController =
+        Get.put(RestaurantController());
     return Scaffold(
         appBar: const FoodScreenAppBar(),
         body: Column(
@@ -31,72 +32,29 @@ class FoodScreenPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: getProportionateScreenHeight(14)),
-            Expanded(
-              child: StreamBuilder<QuerySnapshot>(
-                stream: Database().getRestaurantStream(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
+            restaurantController.obx((state) {
+              if (state is RestaurantsModelLoaded) {
+                var listRestaurants = state.restaurnatModel.restaurants;
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: listRestaurants.length,
+                    itemBuilder: (context, index) {
+                      var restaurant = listRestaurants[index];
+
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(14),
+                            vertical: getProportionateScreenHeight(8)),
+                        child: RestaurantCardSwi(
+                          restaurant: restaurant,
+                        ),
                       );
-                    } else {
-                      return ListView(
-                        children: snapshot.data!.docs.map((e) {
-                          Map<String, List<Food>> foodList = {};
-
-                          List<String> keys = [];
-                          e['menu'].keys.forEach((k) => keys.add(k));
-                          for (var category in keys) {
-                            List<Food> dishList = [];
-                            int noOfDishes = e['menu'][category].length;
-                            for (int dishNo = 0;
-                                dishNo < noOfDishes;
-                                dishNo++) {
-                              Food food = Food(
-                                e['menu'][category][dishNo]['imgUrl'],
-                                e['menu'][category][dishNo]['name'],
-                                // 4.5,
-
-                                int.parse(e['menu'][category][dishNo]['price']),
-                                // 45,
-
-                                // 45,
-                                // e['menu'][category][dishNo]['about']
-                              );
-
-                              dishList.add(food);
-                            }
-                            foodList.addAll({category: dishList});
-                            // print(foodList['Snacks']![0].name);
-                          }
-                          Restaurantt rest = Restaurantt(
-                              e['name'],
-                              e['waitTime'],
-                              e['distance'],
-                              e['label'],
-                              e['logoUrl'],
-                              e['desc'],
-                              double.parse(e['score']),
-                              foodList);
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(14),
-                                vertical: getProportionateScreenHeight(8)),
-                            child: RestaurantCardSwi(
-                              restaurant: rest,
-                            ),
-                          );
-                        }).toList(),
-                      );
-                    }
-                  } else if (snapshot.hasError) {
-                    return const Text('no data');
-                  }
-                  return const Center(child: CircularProgressIndicator());
-                },
-              ),
-            ),
+                    },
+                  ),
+                );
+              }
+              return const Text('Error Ocuured');
+            }),
           ],
         ));
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:resto_hoel_book/screens/signup%20screen/signup.dart';
 
 import '../constants/colors.dart';
 
@@ -31,9 +33,10 @@ class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             width: double.infinity,
             color: kPrimaryColor,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Text(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Spacer(flex: 3),
+                const Text(
                   "Foodiee",
                   style: TextStyle(
                     color: Colors.white,
@@ -41,21 +44,15 @@ class FoodScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // TextButton(
-                //   onPressed: () {
-                //     // print(rest.toFirestore());
-                //     Database.db
-                //         .collection("restaurant")
-                //         .doc("AIHhwOis5XtfweVeqt8a")
-                //         .set(
-                //             dish_add,
-                //             SetOptions(
-                //               merge: true,
-                //             ))
-                //         .onError((e, _) => print("Error writing document: $e"));
-                //   },
-                //   child: const Icon(Icons.add),
-                // ),
+                const Spacer(
+                  flex: 2,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Get.toNamed(SignupScreen.routName);
+                  },
+                  child: const Icon(Icons.add),
+                ),
               ],
             ),
           ),

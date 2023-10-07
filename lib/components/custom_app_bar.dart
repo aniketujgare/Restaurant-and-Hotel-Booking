@@ -4,11 +4,13 @@ class CustomAppBar extends StatelessWidget {
   final IconData leftIcon;
   final IconData rightIcon;
   final Function? leftCallBack;
+  final Function? rightCallBack;
   const CustomAppBar(
       {Key? key,
       required this.leftIcon,
       required this.rightIcon,
-      required this.leftCallBack})
+      required this.leftCallBack,
+      this.rightCallBack})
       : super(key: key);
 
   @override
@@ -27,7 +29,7 @@ class CustomAppBar extends StatelessWidget {
             child: _buildIcon(leftIcon),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: rightCallBack != null ? () => rightCallBack!() : null,
             child: _buildIcon(rightIcon),
           ),
         ],

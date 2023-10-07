@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
 import 'package:resto_hoel_book/models/cart_controller.dart';
-import '../../../models/food.dart';
+import 'package:resto_hoel_book/models/menu_model.dart';
 import '../../../size_config.dart';
 
 class FoodItem extends StatefulWidget {
-  final Food food;
+  final Menu food;
   const FoodItem(this.food, {Key? key}) : super(key: key);
 
   @override
@@ -35,7 +35,6 @@ class _FoodItemState extends State<FoodItem> {
                     BorderRadius.circular(getProportionateScreenWidth(12.0)),
                 child: Image.network(
                   widget.food.imgUrl,
-                  // 'jkjk',
                   fit: BoxFit.fitHeight,
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent? loadingProgress) {
@@ -71,7 +70,6 @@ class _FoodItemState extends State<FoodItem> {
                             widget.food.name,
                             overflow: TextOverflow.fade,
                             softWrap: false,
-                            // 'jj',
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,

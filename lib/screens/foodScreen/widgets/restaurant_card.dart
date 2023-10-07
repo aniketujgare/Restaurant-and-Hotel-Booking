@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../models/restaurantt.dart';
+import '../../../models/restaurant_model.dart';
 import '../../../size_config.dart';
 import 'food_menu.dart';
 
 class RestaurantCard extends StatelessWidget {
-  final Restaurantt restaurant;
+  final Restaurant restaurant;
   const RestaurantCard({
     Key? key,
     required this.restaurant,
@@ -14,16 +14,6 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Restaurantt rest = Restaurantt(
-    //     restaurant['name'],
-    //     restaurant['waitTime'],
-    //     restaurant['distance'],
-    //     restaurant['label'],
-    //     restaurant['logoUrl'],
-    //     restaurant['desc'],
-    //     4.8,
-    //     restaurant['menu']);
-
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
@@ -123,7 +113,7 @@ class RestaurantCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      restaurant.desc,
+                      'restaurant.desc',
                       style:
                           TextStyle(fontSize: 14, color: Colors.grey.shade600),
                     ),

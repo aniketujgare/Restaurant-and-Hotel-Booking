@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../constants/colors.dart';
+import '../getx_controller/restaurants_controller.dart';
 import '../screens/foodScreen/food_screen_page.dart';
 import '../screens/hotel%20screen/hotel_screen_page.dart';
 

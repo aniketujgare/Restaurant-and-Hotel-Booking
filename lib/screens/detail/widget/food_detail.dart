@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:resto_hoel_book/models/menu_model.dart';
 import '../../../constants/colors.dart';
-import '../../../models/food.dart';
 import '../../../size_config.dart';
 
 import 'food_quantity.dart';
 
 class FoodDetail extends StatelessWidget {
-  final Food food;
+  final Menu food;
   const FoodDetail({Key? key, required this.food}) : super(key: key);
 
   @override

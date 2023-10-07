@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../models/restaurantt.dart';
+import 'package:resto_hoel_book/models/restaurant_model.dart';
 import 'food_menu.dart';
 
 import '../../../size_config.dart';
 
 class RestaurantCardSwi extends StatelessWidget {
-  final Restaurantt restaurant;
+  final Restaurant restaurant;
   const RestaurantCardSwi({
     Key? key,
     required this.restaurant,
@@ -94,7 +94,7 @@ class RestaurantCardSwi extends StatelessWidget {
                       ),
                       SizedBox(width: getProportionateScreenHeight(10)),
                       Text(
-                        restaurant.waitTime,
+                        '35-45 min',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
@@ -107,7 +107,7 @@ class RestaurantCardSwi extends StatelessWidget {
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.5,
                     child: Text(
-                      restaurant.desc,
+                      restaurant.tagLine,
                       overflow: TextOverflow.fade,
                       softWrap: false,
                       style:

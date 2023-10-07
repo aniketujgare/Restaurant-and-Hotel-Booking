@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:resto_hoel_book/constants/colors.dart';
-import 'package:resto_hoel_book/models/restaurantt.dart';
 import 'package:resto_hoel_book/size_config.dart';
+
+import '../../../models/restaurant_model.dart';
 
 class RestaurantInfo extends StatelessWidget {
   // final restaurnat = Restaurant.generateRestaurant();
-  final Restaurantt restaurantt;
+  final Restaurant restaurantt;
   const RestaurantInfo({Key? key, required this.restaurantt}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class RestaurantInfo extends StatelessWidget {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: Text(
-                          restaurantt.waitTime,
+                          '35-45 min',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -57,7 +58,7 @@ class RestaurantInfo extends StatelessWidget {
                       SizedBox(
                         width: getProportionateScreenWidth(150),
                         child: Text(
-                          restaurantt.label,
+                          'Restaurant',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           softWrap: false,
@@ -92,7 +93,7 @@ class RestaurantInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '"${restaurantt.desc}"',
+                '"${restaurantt.tagLine}"',
                 style: const TextStyle(
                   fontSize: 16,
                 ),

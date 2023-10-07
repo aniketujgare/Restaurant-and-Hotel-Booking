@@ -44,6 +44,7 @@ dependencies:
   get: ^4.6.3
   sliding_up_panel: ^2.0.0+1
   expandable_bottom_sheet: ^1.1.1+1
+  http: ^1.1.0
   
 
 dev_dependencies:
